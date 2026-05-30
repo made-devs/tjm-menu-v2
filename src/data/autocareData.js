@@ -1,8 +1,3 @@
-import { acMobilData } from "./acMobilData.js";
-import { detailingData } from "./detailingData.js";
-import { undercarriageData } from "./undercarriageData.js";
-
-
 export const servicesData = [
   {
     slug: "paket-special",
@@ -10,7 +5,7 @@ export const servicesData = [
     title: "TJM Special Package",
     description:
       "Paket platinum, fuel system, healthy, dan kaki-kaki racksteer hemat.",
-    image: "/services/service14.webp",
+    image: "/services/autocare/special2.webp",
     details:
       "Solusi servis terpadu dengan berbagai pilihan paket khusus untuk kebutuhan spesifik kendaraan Anda, dari pembersihan sistem bahan bakar hingga perawatan lengkap kaki-kaki.",
     variants: [
@@ -90,7 +85,7 @@ export const servicesData = [
     href: "/layanan/paket-member-tahunan",
     title: "Paket Member Tahunan",
     description: "Member tahunan dengan banyak benefit dan promo gratis.",
-    image: "/services/service12.webp",
+    image: "/services/autocare/member1.webp",
     details:
       "Program keanggotaan tahunan eksklusif dengan berbagai keuntungan dan layanan gratis untuk perawatan kendaraan sepanjang tahun.",
     variants: [
@@ -172,7 +167,7 @@ export const servicesData = [
     href: "/layanan/paket-super-hemat",
     title: "Paket Super Hemat",
     description: "Promo terbatas, terlengkap, terhemat, bergaransi 1 bulan.",
-    image: "/services/service4.webp",
+    image: "/services/autocare/hemat1.webp",
     details:
       "Solusi servis terjangkau dengan paket lengkap yang mencakup tune up, gurah mesin, service rem, radiator, dan berbagai treatment untuk perawatan menyeluruh kendaraan Anda.",
     variants: [
@@ -277,7 +272,7 @@ export const servicesData = [
     title: "Paket Combo Super Komplit",
     description:
       "Paket combo service mobil & service kaki-kaki terlengkap dengan series kombinasi terengkap.",
-    image: "/services/service10.webp",
+    image: "/services/autocare/komplit1.webp",
     details:
       "Solusi service mobil paling lengkap yang menggabungkan tune up mesin, service kaki-kaki, dan berbagai treatment untuk hasil perawatan menyeluruh dengan harga terjangkau.",
     variants: [
@@ -403,7 +398,7 @@ export const servicesData = [
     title: "Paket Combo Kaki Kaki",
     description:
       "Solusi lengkap untuk kenyamanan dan keamanan kaki-kaki mobil Anda.",
-    image: "/services/service1.webp",
+    image: "/services/autocare/combokaki1.webp",
     details:
       "Paket ini mencakup pemeriksaan dan perbaikan menyeluruh pada komponen suspensi, steering, dan roda untuk mengembalikan stabilitas dan kenyamanan berkendara seperti semula.",
     variants: [
@@ -536,7 +531,7 @@ export const servicesData = [
     title: "Paket Steering",
     description:
       "Perbaikan dan perawatan sistem kemudi untuk handling yang presisi.",
-    image: "/services/service9.webp",
+    image: "/services/autocare/steering1.webp",
     details:
       "Layanan lengkap untuk semua jenis sistem kemudi, dari power steering hidrolik hingga EPS modern, untuk memastikan kontrol penuh dan respons akurat.",
     variants: [
@@ -645,7 +640,7 @@ export const servicesData = [
     title: "Paket Shockbreaker",
     description:
       "Bengkel spesialis service shockbreaker mobil profesional. Solusi bantingan keras, bocor, atau limbung. Rekondisi shockbreaker depan & belakang dengan garansi resmi dan pengerjaan cepat.",
-    image: "/services/service1.webp",
+    image: "/services/autocare/shockbreaker1.webp",
     details:
       "Layanan profesional untuk perawatan dan perbaikan shockbreaker mobil. Kami menyediakan jasa rekondisi, penggantian seal, hingga pengisian nitrogen untuk mengembalikan kenyamanan suspensi kendaraan Anda seperti baru.",
     variants: [
@@ -754,7 +749,7 @@ export const servicesData = [
     href: "/layanan/paket-kaki-kaki-racksteer",
     title: "Paket Kaki-Kaki Racksteer",
     description: "Perawatan kaki-kaki lengkap & bergaransi 1 bulan.",
-    image: "/services/service7.webp",
+    image: "/services/autocare/racksteer1.webp",
     details:
       "Paket ini mencakup pemeriksaan dan perbaikan menyeluruh pada komponen suspensi, steering, dan roda untuk mengembalikan stabilitas dan kenyamanan berkendara seperti semula.",
     variants: [
@@ -798,7 +793,7 @@ export const servicesData = [
     href: "/layanan/paket-overhaul",
     title: "Paket Overhaul",
     description: "Cegah biaya besar dengan pembersihan kerak & lumpur mesin.",
-    image: "/services/service2.webp",
+    image: "/services/autocare/overhaul1.webp",
     details:
       "Solusi perawatan menyeluruh untuk mesin dengan pembersihan kerak, lumpur, dan sludge untuk mengembalikan performa mesin ke kondisi optimal.",
     variants: [
@@ -902,10 +897,10 @@ export const servicesData = [
   {
     slug: "paket-kaki-kaki",
     href: "/layanan/paket-kaki-kaki",
-    title: "Paket Kaki-Kaki Mobil Spesialis & Bergaransi",
+    title: "Paket Kaki-Kaki",
     description:
       "Paket servis kaki-kaki mobil mulai 649 RB untuk mengatasi bunyi gluduk-gluduk, perbaikan shockbreaker, rack steer, tie rod, hingga bushing arm. Layanan terlengkap hingga 141 item pengecekan detail dengan teknisi ahli.",
-    image: "/services/service5.webp",
+    image: "/services/autocare/kaki1.webp",
     details:
       "TJM Auto Care adalah bengkel kaki-kaki mobil profesional yang fokus pada kenyamanan dan keamanan berkendara. Kami menangani berbagai masalah suspensi dan kemudi dengan hingga 141 item pengerjaan detail, menggunakan suku cadang berkualitas tinggi untuk menghilangkan bunyi gluduk and meningkatkan stabilitas kendaraan.",
     variants: [
@@ -1004,7 +999,7 @@ export const servicesData = [
     title: "Paket Diesel",
     description:
       "Tune up, general check up, service rem, radiator, dan lainnya.",
-    image: "/services/service6.webp",
+    image: "/services/autocare/diesel1.webp",
     details:
       "Layanan lengkap khusus untuk kendaraan diesel dengan tune up mesin, pembersihan injector, dan perawatan sistem diesel untuk performa optimal.",
     variants: [
@@ -1229,15 +1224,107 @@ export const servicesData = [
     ],
   },
   {
-    slug: "paket-racksteer-ultimate",
-    href: "/layanan/paket-racksteer-ultimate",
-    title: "Paket Racksteer Ultimate",
+    slug: "paket-racksteer",
+    href: "/layanan/paket-racksteer",
+    title: "Paket Racksteer",
     description:
       "Spesialis service rack steer dan power steering mobil. Atasi setir berat, bocor, atau bunyi saat belok dengan teknisi ahli dan garansi pengerjaan.",
-    image: "/services/service7.webp",
+    image: "/services/autocare/racksteer2.webp",
     details:
       "Layanan lengkap untuk service racksteer dan power steering dengan teknologi terkini, termasuk rebuild, cleaning, dan penyetelan untuk handling yang presisi.",
     variants: [
+      {
+        slug: "racksteer-hemat",
+        title: "Paket Kaki-Kaki Racksteer Hemat",
+        description: "Perawatan terlengkap & bergaransi 1 bulan dengan promo spesial.",
+        image: "/services/autocare/racksteer1.webp",
+        details: [
+          {
+            title: "Service Racksteer (EPS) Rekondisi dan Setel Ulang",
+            description: "",
+          },
+          {
+            title: "Bushing Racksteer Custom",
+            description: "",
+          },
+          {
+            title: "Tune Up 65 Komponen",
+            description: "",
+          },
+          {
+            title: "Gurah Mesin / Injector Cleaning / Catalytic Cleaner",
+            description: "",
+          },
+          {
+            title: "Engine Scanner",
+            description: "",
+          },
+          {
+            title: "Penambahan Grease / Pelumas Di Semua Area Kaki - Kaki",
+            description: "",
+          },
+          {
+            title: "Inspeksi Link Stabilizer",
+            description: "",
+          },
+          {
+            title: "Inspeksi Idle Arm",
+            description: "",
+          },
+          {
+            title: "Inpeksi Ball Joint",
+            description: "",
+          },
+          {
+            title: "Inspeksi Tie Rod",
+            description: "",
+          },
+          {
+            title: "Inspeksi Long Tie Rod",
+            description: "",
+          },
+          {
+            title: "Inspeksi Bearing / As Roda",
+            description: "",
+          },
+          {
+            title: "Inspeksi Lower Arm",
+            description: "",
+          },
+          {
+            title: "Rubberized Undercoat",
+            description: "Pelapis anti karat teknologi peredam suara.",
+          },
+          {
+            title: "Grease Kaki Kaki",
+            description: "",
+          },
+          {
+            title: "Service Rem Komplit 4 Roda & Kuras Minyak Rem",
+            description: "",
+          },
+          {
+            title: "General Check Up Kaki Kaki 25 Titik",
+            description: "",
+          },
+          {
+            title: "Inspeksi Collumn Steer dan Joint Steer",
+            description: "",
+          },
+          {
+            title: "Rotasi Ban 4 Roda",
+            description: "",
+          },
+          {
+            title: "Inspeksi AC Mobil",
+            description: "",
+          },
+          {
+            title: "Wheel Dressing",
+            description: "",
+          },
+        ],
+      },
       {
         slug: "racksteer-ultimate",
         title: "Paket Racksteer Ultimate",
@@ -1280,7 +1367,7 @@ export const servicesData = [
     title: "Paket Custom Suspension",
     description:
       "Custom suspensi ceper, fitting, tune up, dan nitrogen shockbreaker.",
-    image: "/services/service1.webp",
+    image: "/services/autocare/suspension1.webp",
     details:
       "Layanan customisasi suspensi lengkap dengan pilihan ketinggian, setting, dan coating untuk menciptakan tampilan dan performa suspensi sesuai keinginan Anda.",
     variants: [
@@ -1385,9 +1472,5 @@ export const servicesData = [
       },
     ],
   },
-  // TJM AC Mobil services
-  ...acMobilData,
-  ...detailingData,
-  ...undercarriageData,
 ];
 

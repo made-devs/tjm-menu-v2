@@ -3,12 +3,13 @@
 import { useState } from 'react';
 import SubBrandFilter from '@/components/ui/SubBrandFilter';
 import ServiceCard from '@/components/ui/ServiceCard';
-import Modal from '@/components/ui/Modal';
 import { useScrollReveal } from '@/components/animations/useScrollReveal';
 import Image from 'next/image';
+import { SUB_BRANDS } from '@/data/subBrands';
 
 export default function ServiceClient({ initialBrand, allServices }) {
-  const [activeBrand, setActiveBrand] = useState(initialBrand || null);
+  const availableBrands = SUB_BRANDS.filter(b => b.id !== 'express');
+  const [activeBrand, setActiveBrand] = useState(initialBrand || availableBrands[0]?.id || null);
   const [selectedService, setSelectedService] = useState(null);
   const containerRef = useScrollReveal({ stagger: 0.05, yOffset: 20 });
 
@@ -21,15 +22,54 @@ export default function ServiceClient({ initialBrand, allServices }) {
 
   return (
     <div className="min-h-screen bg-tjm-black bg-carbon text-white px-6 pt-6 pb-12">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold tracking-wider mb-2">SERVICE</h1>
-        <p className="text-tjm-gray-300 text-sm">Pilihan paket perawatan untuk performa maksimal.</p>
+      {/* TJM Logo Top Center */}
+      <div className="flex justify-center w-full mb-6 relative z-10 drop-shadow-[0_0_15px_rgba(239,68,68,0.5)]">
+        <Image 
+          src="/logo/logotjm.webp" 
+          alt="TJM Logo" 
+          width={180} 
+          height={60} 
+          className="object-contain"
+          priority
+        />
       </div>
 
-      <div className="sticky top-0 z-20 bg-tjm-black/80 backdrop-blur-md pt-2 pb-4 -mx-6 px-6 border-b border-tjm-dark-700/50 shadow-[0_10px_20px_rgba(0,0,0,0.5)]">
+      {/* Hero Header Section */}
+      <div className="relative mb-8 mt-2 rounded-3xl overflow-hidden shadow-[0_15px_40px_rgba(220,38,38,0.2)] border border-tjm-red-900/40 group">
+        <div className="absolute inset-0 bg-tjm-red-500 blur-xl opacity-20 animate-pulse-glow"></div>
+        <div className="relative w-full aspect-[16/9] md:aspect-[21/9]">
+          <Image 
+            src="/services/autocare.webp"
+            alt="TJM Service Hero"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+            className="object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80"
+            priority
+          />
+          {/* Gradients for readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-tjm-black via-tjm-black/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-tjm-black/80 via-tjm-black/20 to-transparent"></div>
+          
+          <div className="absolute inset-0 flex flex-col justify-end p-6">
+            <h1 className="text-3xl md:text-4xl font-bold tracking-wider mb-2 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              TJM <span className="text-tjm-red-500 drop-shadow-[0_0_10px_rgba(239,68,68,0.8)]">SERVICE</span>
+            </h1>
+            <p className="text-tjm-gray-300 text-sm md:text-base max-w-[80%] drop-shadow-md">
+              Pilihan paket perawatan untuk performa maksimal kendaraan Anda.
+            </p>
+          </div>
+        </div>
+        
+        {/* Accent visual elements */}
+        <div className="absolute top-0 right-0 w-32 h-32 bg-tjm-red-500/20 blur-3xl rounded-full"></div>
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-tjm-red-600 via-tjm-red-400 to-tjm-red-900"></div>
+      </div>
+
+      <div className="sticky top-0 z-20 bg-tjm-black/80 backdrop-blur-md pt-2 pb-4 -mx-6 border-b border-tjm-dark-700/50 shadow-[0_10px_20px_rgba(0,0,0,0.5)]">
         <SubBrandFilter 
           activeBrand={activeBrand} 
           onChange={setActiveBrand} 
+          exclude={['express']}
         />
       </div>
 
@@ -39,7 +79,7 @@ export default function ServiceClient({ initialBrand, allServices }) {
             <ServiceCard 
               key={`${service.subBrandId}-${idx}`} 
               service={service} 
-              onClick={setSelectedService} 
+              href={`/service/${service.slug}`}
             />
           ))
         ) : (
@@ -48,61 +88,6 @@ export default function ServiceClient({ initialBrand, allServices }) {
           </div>
         )}
       </div>
-
-      {/* Detail Modal */}
-      <Modal isOpen={!!selectedService} onClose={() => setSelectedService(null)}>
-        {selectedService && (
-          <div className="flex flex-col gap-5 pt-2">
-            <div className="relative w-full aspect-square rounded-xl overflow-hidden border border-tjm-dark-700 bg-tjm-dark-900">
-              <Image
-                src={selectedService.image || '/logo/logotjm.webp'}
-                alt={selectedService.title || selectedService.name}
-                fill
-                className="object-cover"
-              />
-            </div>
-            
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="bg-tjm-red-900/50 text-tjm-red-500 text-xs font-bold px-2 py-1 rounded">
-                  TJM {selectedService.brandName || "SERVICE"}
-                </span>
-              </div>
-              <h3 className="text-2xl font-bold leading-tight">
-                {selectedService.title || selectedService.name}
-              </h3>
-              
-              <div className="mt-4 p-4 bg-tjm-dark-800 rounded-xl border border-tjm-dark-700">
-                <h4 className="text-sm font-semibold text-tjm-gray-300 mb-2 uppercase tracking-wider">Deskripsi</h4>
-                <p className="text-sm leading-relaxed">
-                  {selectedService.description || selectedService.details || "Deskripsi paket service."}
-                </p>
-              </div>
-
-              {selectedService.variants && selectedService.variants.length > 0 && (
-                <div className="mt-4">
-                  <h4 className="text-sm font-semibold text-tjm-gray-300 mb-3 uppercase tracking-wider">Termasuk dalam paket:</h4>
-                  <ul className="space-y-3">
-                    {selectedService.variants.map((v, i) => (
-                      <li key={i} className="flex gap-3 bg-tjm-dark-800/50 p-3 rounded-lg border border-tjm-dark-700/50">
-                        <div className="text-tjm-red-500 shrink-0 mt-0.5">
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <div>
-                          <p className="text-sm font-semibold">{v.title}</p>
-                          {v.description && <p className="text-xs text-tjm-gray-400 mt-1">{v.description}</p>}
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-      </Modal>
     </div>
   );
 }

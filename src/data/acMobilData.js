@@ -5,7 +5,7 @@ export const acMobilData = [
     title: "Paket AC Series",
     description:
       "Layanan AC mobil lengkap dengan inspeksi menyeluruh, pembersihan komponen, dan perbaikan sistem pendingin untuk kenyamanan maksimal.",
-    image: "/services/ac1.webp",
+    image: "/services/ac/acseries1.webp",
     details:
       "Solusi perawatan AC mobil terlengkap dengan berbagai paket pilihan, dari pembersihan evaporator hingga service komprehensif dengan teknologi terkini untuk AC yang selalu dingin dan segar.",
     variants: [
@@ -155,7 +155,7 @@ export const acMobilData = [
     title: "Paket Triple Combo",
     description:
       "Paket lengkap AC, tune up, dan perawatan komprehensif dengan berbagai pilihan layanan premium, full detailing, nano ceramic coating, dan oli komplit untuk performa maksimal kendaraan Anda.",
-    image: "/services/ac5.webp",
+    image: "/services/ac/triplecombo1.webp",
     details:
       "Solusi perawatan AC mobil terlengkap dengan berbagai paket triple combo pilihan, dari AC komplit dengan full detailing dan nano ceramic coating hingga AC dengan tune up dan oli komplit lengkap untuk kendaraan yang prima.",
     variants: [

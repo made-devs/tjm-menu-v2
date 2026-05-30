@@ -5,7 +5,7 @@ export const undercarriageData = [
     title: "Paket Combo Pasti Hemat",
     description:
       "Solusi bengkel kaki-kaki mobil dan anti karat dalam satu paket. Mengatasi bunyi gluduk-gluduk dengan inspeksi 25 titik, scrape karat, dan perlindungan rust protection bergaransi.",
-    image: "/services/paketcombo1.webp",
+    image: "/services/undercarriage/undercarriage1.webp",
     details:
       "TJM Auto Care menghadirkan paket Combo Pasti Hemat sebagai solusi total bengkel kaki-kaki dan perlindungan kolong mobil. Paket ini menggabungkan pengecekan detail sistem suspensi untuk menghilangkan bunyi gluduk serta proteksi anti karat untuk menjaga integritas sasis kendaraan Anda.",
     variants: [

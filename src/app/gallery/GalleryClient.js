@@ -20,9 +20,47 @@ export default function GalleryClient({ photos }) {
 
   return (
     <div className="min-h-screen bg-tjm-black bg-carbon text-white px-6 pt-6 pb-12">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold tracking-wider mb-2">GALLERY</h1>
-        <p className="text-tjm-gray-300 text-sm">Dokumentasi hasil pengerjaan terbaik dari tim kami.</p>
+      {/* TJM Logo Top Center */}
+      <div className="flex justify-center w-full mb-6 relative z-10 drop-shadow-[0_0_15px_rgba(239,68,68,0.5)]">
+        <Image 
+          src="/logo/logotjm.webp" 
+          alt="TJM Logo" 
+          width={180} 
+          height={60} 
+          className="object-contain"
+          priority
+        />
+      </div>
+
+      {/* Hero Header Section */}
+      <div className="relative mb-8 mt-2 rounded-3xl overflow-hidden shadow-[0_15px_40px_rgba(220,38,38,0.2)] border border-tjm-red-900/40 group">
+        <div className="absolute inset-0 bg-tjm-red-500 blur-xl opacity-20 animate-pulse-glow"></div>
+        <div className="relative w-full aspect-[16/9] md:aspect-[21/9]">
+          <Image 
+            src={photos && photos.length > 0 ? photos[0].src : "/services/autocare.webp"}
+            alt="TJM Gallery Hero"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+            className="object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80"
+            priority
+          />
+          {/* Gradients for readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-tjm-black via-tjm-black/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-tjm-black/80 via-tjm-black/20 to-transparent"></div>
+          
+          <div className="absolute inset-0 flex flex-col justify-end p-6">
+            <h1 className="text-3xl md:text-4xl font-bold tracking-wider mb-2 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              TJM <span className="text-tjm-red-500 drop-shadow-[0_0_10px_rgba(239,68,68,0.8)]">GALLERY</span>
+            </h1>
+            <p className="text-tjm-gray-300 text-sm md:text-base max-w-[80%] drop-shadow-md">
+              Dokumentasi hasil pengerjaan terbaik dari tim kami.
+            </p>
+          </div>
+        </div>
+        
+        {/* Accent visual elements */}
+        <div className="absolute top-0 right-0 w-32 h-32 bg-tjm-red-500/20 blur-3xl rounded-full"></div>
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-tjm-red-600 via-tjm-red-400 to-tjm-red-900"></div>
       </div>
 
       {/* Grid Masonry-like Layout */}

@@ -38,8 +38,7 @@ export default function BottomNav() {
   return (
     <nav 
       ref={navRef}
-      className="fixed bottom-0 left-0 right-0 h-[72px] bg-tjm-dark-900/80 backdrop-blur-xl border-t border-tjm-dark-700 z-50 pb-[env(safe-area-inset-bottom)]"
-      style={{ maxWidth: '430px', margin: '0 auto' }}
+      className="fixed bottom-0 left-0 right-0 h-[72px] bg-tjm-dark-900/80 backdrop-blur-xl border-t border-tjm-dark-700 z-50 pb-[env(safe-area-inset-bottom)] mx-auto w-full lg:max-w-[1024px]"
     >
       <div className="relative flex h-full items-center">
         {/* Active Indicator Top Line */}

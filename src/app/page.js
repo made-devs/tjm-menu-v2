@@ -14,6 +14,7 @@ import { SUB_BRANDS } from "@/data/subBrands";
 export default function Home() {
   const heroRef = useRef(null);
   const typeRef = useRef(null);
+  const cursorRef = useRef(null);
   const gridRef = useRef(null);
 
   useGSAP(() => {
@@ -31,17 +32,31 @@ export default function Home() {
       text: "SOLUSI TEPAT KENDARAAN ANDA",
       duration: 2,
       delay: 0.5,
-      ease: "none"
+      ease: "none",
+      onComplete: () => {
+        // Fade out and shrink cursor to re-center text smoothly
+        gsap.to(cursorRef.current, {
+          opacity: 0,
+          width: 0,
+          marginLeft: 0,
+          marginRight: 0,
+          duration: 0.5,
+          ease: "power2.out",
+          onComplete: () => {
+            if (cursorRef.current) cursorRef.current.style.display = 'none';
+          }
+        });
+      }
     });
 
     // 3. Grid stagger entrance
-    gsap.fromTo('.brand-card', 
+    gsap.fromTo('.brand-card',
       { y: 50, opacity: 0 },
-      { 
-        y: 0, 
-        opacity: 1, 
-        stagger: 0.1, 
-        duration: 0.6, 
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.1,
+        duration: 0.6,
         ease: 'back.out(1.7)',
         delay: 0.5
       }
@@ -55,7 +70,7 @@ export default function Home() {
   });
 
   return (
-    <main className="relative min-h-[100dvh] flex flex-col bg-tjm-black bg-carbon text-white pb-[88px]">
+    <main className="relative min-h-[100dvh] flex flex-col bg-tjm-black bg-carbon text-white">
       <SpeedLines />
 
       {/* Hero Section */}
@@ -65,15 +80,35 @@ export default function Home() {
             src="/logo/logotjm.webp"
             alt="TJM Auto Care Logo"
             fill
+            sizes="200px"
             className="object-contain logo-img drop-shadow-[0_0_20px_rgba(220,38,38,0.6)]"
             priority
           />
         </div>
         <h1 className="text-xl md:text-2xl font-bold tracking-wider text-center h-8 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
           <span ref={typeRef} className="text-transparent bg-clip-text bg-gradient-to-r from-white to-tjm-gray-300"></span>
-          <span className="animate-pulse text-tjm-red-500 shadow-tjm-red-500 drop-shadow-[0_0_8px_rgba(220,38,38,0.8)]">_</span>
+          <span ref={cursorRef} className="inline-block animate-pulse text-tjm-red-500 shadow-tjm-red-500 drop-shadow-[0_0_8px_rgba(220,38,38,0.8)] overflow-hidden align-bottom">_</span>
         </h1>
       </section>
+
+      {/* Hero Promo Section */}
+      <div className="relative z-10 px-6 mt-4 mb-2">
+        <Link href="/promo" className="block relative w-full aspect-video rounded-2xl overflow-hidden border border-tjm-dark-700 shadow-lg group">
+          <Image
+            src="/gallery/combokaki1.webp"
+            alt="Gebyar Promo Kaki Kaki"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-tjm-black via-tjm-black/40 to-transparent flex flex-col justify-end p-5">
+            <h2 className="text-xl md:text-2xl font-bold tracking-wide text-white drop-shadow-lg leading-tight">
+              Gebyar Promo Kaki Kaki <br />
+              <span className="text-tjm-red-500">Mulai 600 Ribuan!</span>
+            </h2>
+          </div>
+        </Link>
+      </div>
 
       {/* Promo Carousel */}
       <div className="relative z-10">
@@ -87,23 +122,34 @@ export default function Home() {
 
       {/* Content Area */}
       <section className="relative z-10 flex-1 px-6 py-8 flex flex-col gap-8 bg-tjm-dark-900/60 backdrop-blur-md rounded-t-[32px] mt-6 border-t border-tjm-red-900/40 shadow-[0_-15px_40px_rgba(220,38,38,0.15)]">
-        
+
         {/* Quick Access Grid */}
         <div ref={gridRef}>
           <h2 className="featured-header text-xl font-bold tracking-widest mb-4 flex items-center gap-2 drop-shadow-[0_0_5px_rgba(255,255,255,0.2)]">
             <span className="w-2 h-6 bg-tjm-red-500 rounded-sm skew-x-[-15deg] shadow-[0_0_8px_rgba(239,68,68,0.8)]"></span>
             PILIH LAYANAN
           </h2>
-          
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
-            {SUB_BRANDS.map((brand, i) => (
-              <BrandCard key={brand.id} brand={brand} isFeatured={i === 0} />
-            ))}
+
+          <div className="grid grid-cols-2 gap-3">
+            {SUB_BRANDS.filter(b => b.id !== 'express').map((brand, i) => {
+              let gridClass = "col-span-1";
+              if (i === 0) gridClass = "col-span-1 row-span-2 min-h-[140px]"; // Auto Care
+              else if (i === 3) gridClass = "col-span-2"; // Undercarriage
+
+              return (
+                <BrandCard
+                  key={brand.id}
+                  brand={brand}
+                  className={gridClass}
+                  isFeatured={i === 0}
+                />
+              );
+            })}
           </div>
         </div>
 
         {/* Featured Action */}
-        <div className="mt-auto pt-4">
+        <div className="mt-4 pt-4">
           <Link href="/service" className="block relative group">
             <div className="absolute inset-0 bg-tjm-red-500 rounded-xl blur-md opacity-40 group-active:opacity-70 transition-opacity"></div>
             <div className="relative animate-pulse-glow w-full bg-gradient-to-r from-tjm-red-600 to-tjm-red-900 rounded-xl p-4 flex items-center justify-between border border-tjm-red-400/50">
@@ -125,23 +171,36 @@ export default function Home() {
   );
 }
 
-function BrandCard({ brand, isFeatured }) {
+function BrandCard({ brand, isFeatured, className = '' }) {
   const { ref, ...tapProps } = useTapAnimation(0.95);
-  
+
   return (
-    <Link 
-      href={`/promo?brand=${brand.id}`}
+    <Link
+      href={`/service?brand=${brand.id}`}
       ref={ref}
       {...tapProps}
-      className={`brand-card relative overflow-hidden rounded-xl border border-tjm-dark-700 bg-gradient-to-b from-tjm-dark-800 to-tjm-dark-900 p-4 shadow-[0_4px_15px_rgba(0,0,0,0.3)] hover:border-tjm-red-500/50 transition-colors ${isFeatured ? 'col-span-2 md:col-span-1' : ''}`}
+      className={`brand-card relative overflow-hidden rounded-xl border border-tjm-dark-700 p-4 shadow-[0_4px_15px_rgba(0,0,0,0.3)] hover:border-tjm-red-500/50 transition-colors group ${className}`}
     >
-      <div className={`absolute top-0 right-0 w-20 h-20 opacity-30 rotate-12 translate-x-4 -translate-y-4 rounded-full blur-xl ${brand.color}`}></div>
+      {/* Background Image */}
+      <Image
+        src={`/services/${brand.id}.webp`}
+        alt={`${brand.name} background`}
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        priority={isFeatured}
+        className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-60"
+      />
+
+      {/* Gradient overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-t from-tjm-black via-tjm-black/60 to-transparent"></div>
+      <div className={`absolute top-0 right-0 w-24 h-24 opacity-30 rotate-12 translate-x-4 -translate-y-4 rounded-full blur-xl ${brand.color}`}></div>
+
+      {/* Content */}
       <div className="relative z-10 flex flex-col h-full justify-between gap-4">
         <div className={`w-4 h-1.5 rounded-full ${brand.color} shadow-[0_0_5px_currentColor]`}></div>
-        <h3 className="font-bold tracking-wide text-[13px] leading-tight uppercase drop-shadow-sm">TJM<br/>{brand.shortName || brand.name}</h3>
-      </div>
-      <div className="absolute bottom-0 right-0 p-3 opacity-30">
-        <span className="text-2xl filter drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">{brand.icon}</span>
+        <h3 className={`font-bold tracking-wide leading-tight uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] ${isFeatured ? 'text-[15px]' : 'text-[13px]'}`}>
+          TJM<br />{brand.shortName || brand.name}
+        </h3>
       </div>
     </Link>
   );

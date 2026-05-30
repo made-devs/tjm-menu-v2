@@ -34,11 +34,17 @@ export default function PromoCarousel() {
 function CarouselCard({ brand, index }) {
   const { ref, ...tapProps } = useTapAnimation(0.95, 0.2);
 
-  // We use placeholder images since actual ones aren't guaranteed yet.
-  // We can use a simple gradient placeholder for now, or just Unsplash.
-  // Since we need it to look good, we'll use a nice CSS gradient + pattern
-  // to simulate a premium placeholder.
-  
+  const getPromoImage = (brandId) => {
+    switch (brandId) {
+      case 'ac': return '/promo/ac/acgrid1.webp';
+      case 'autocare': return '/promo/autocare/autogrid1.webp';
+      case 'detailing': return '/promo/detailing/detailinggrid1.webp';
+      case 'express': return '/promo/express/expressgrid1.webp';
+      case 'undercarriage': return '/promo/undercarriage/undercarriagegrid1.webp';
+      default: return `/promo/${brandId}/grid1.webp`;
+    }
+  };
+
   return (
     <Link
       href={brand.path || `/promo?brand=${brand.id}`}
@@ -46,18 +52,18 @@ function CarouselCard({ brand, index }) {
       {...tapProps}
       className="relative flex-shrink-0 w-[240px] aspect-[4/5] snap-center rounded-2xl overflow-hidden bg-tjm-dark-900 border border-tjm-red-900/50 shadow-[0_10px_20px_rgba(0,0,0,0.5),_0_0_15px_rgba(220,38,38,0.2)] group"
     >
-      {/* Dynamic Placeholder Background */}
-      <div className={`absolute inset-0 bg-gradient-to-br from-tjm-dark-800 to-tjm-black ${brand.color.replace('bg-', 'from-').replace('900', '900/20')} opacity-50`}></div>
-      <div className="absolute inset-0 bg-carbon mix-blend-overlay opacity-30"></div>
-      
-      {/* Placeholder Image Text/Icon (just for visual if no image) */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-40 transition-opacity">
-        <span className="text-6xl filter drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]">{brand.icon}</span>
-      </div>
+      {/* Background Image */}
+      <Image
+        src={getPromoImage(brand.id)}
+        alt={`Promo ${brand.name}`}
+        fill
+        className="object-cover transition-transform duration-700 group-hover:scale-105"
+      />
 
-      {/* Red Glow Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-tjm-red-900/80 via-tjm-black/20 to-transparent"></div>
-      
+      {/* Red Glow & Gradient Overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-t from-tjm-black via-tjm-black/40 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-tjm-red-900/80 via-transparent to-transparent opacity-80"></div>
+
       {/* Shine effect */}
       <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-white/10 opacity-50 pointer-events-none"></div>
 

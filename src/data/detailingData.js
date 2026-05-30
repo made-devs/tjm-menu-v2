@@ -5,7 +5,7 @@ export const detailingData = [
     title: "Paket Detailing Series",
     description:
       "Paket detailing lengkap dari eksterior hingga interior dengan berbagai pilihan, mulai dari basic express detailing hingga paket cuci salju premium dengan steam uap untuk hasil maksimal.",
-    image: "/services/detailing1.webp",
+    image: "/services/detailing/detailing1.webp",
     details:
       "Solusi detailing profesional untuk mobil Anda dengan paket pilihan yang komprehensif, mencakup interior express detailing, eksterior express detailing, dan paket cuci salju dengan steam uap untuk kebersihan dan kilau sempurna.",
     variants: [
@@ -333,7 +333,7 @@ export const detailingData = [
     title: "Paket Nano Ceramic Coating",
     description:
       "Paket perlindungan cat premium dengan nano ceramic coating 3 layer, interior & eksterior full detailing, glass treatment, dan berbagai layanan detail lengkap untuk proteksi maksimal kendaraan Anda.",
-    image: "/services/coating1.webp",
+    image: "/services/detailing/nano1.webp",
     details:
       "Solusi perlindungan cat mobil profesional dengan paket nano ceramic coating pilihan, dari paket dasar dengan coating 3 layer hingga paket super komplit dengan full detailing, engine detailing, dan treatment lengkap.",
     variants: [
@@ -452,7 +452,7 @@ export const detailingData = [
     title: "Paket Pasti Kinclong",
     description:
       "Paket detailing premium dengan ultra nano coating, cuci snow, interior & eksterior full detailing, engine detailing, dan berbagai layanan detail lengkap untuk hasil kinclong sempurna.",
-    image: "/services/pastikinc1.webp",
+    image: "/services/detailing/kinclong1.webp",
     details:
       "Solusi detailing profesional untuk mobil Anda dengan paket pasti kinclong pilihan, dari paket dasar hingga paket super komplit dengan nano coating premium dan 21 layanan detail lengkap untuk tampilan kinclong maksimal.",
     variants: [

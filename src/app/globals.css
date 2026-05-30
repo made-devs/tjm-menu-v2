@@ -14,6 +14,10 @@
   --color-tjm-dark-700: #252525;
   --color-tjm-dark-600: #333333;
   
+  --color-tjm-gray-300: #D1D5DB;
+  --color-tjm-gray-400: #9CA3AF;
+  --color-tjm-gray-500: #6B7280;
+  
   --font-sans: var(--font-rajdhani), system-ui, sans-serif;
 }
 
@@ -70,7 +74,6 @@ body {
 /* Desktop Lock Frame */
 .desktop-lock-frame {
   width: 100%;
-  max-width: 430px; /* iPhone Pro Max width approx */
   margin: 0 auto;
   min-height: 100dvh;
   position: relative;
@@ -85,6 +88,7 @@ body {
   }
   
   .desktop-lock-frame {
+    max-width: 1024px;
     border-left: 1px solid var(--color-tjm-dark-700);
     border-right: 1px solid var(--color-tjm-dark-700);
   }

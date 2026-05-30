@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { gsap } from '@/lib/gsap';
+import { gsap, Draggable } from '@/lib/gsap';
 import { useTapAnimation } from '@/components/animations/useTapAnimation';
 
 export default function Modal({ isOpen, onClose, children }) {
@@ -21,7 +21,7 @@ export default function Modal({ isOpen, onClose, children }) {
       );
       
       // Setup Draggable for swipe-to-close
-      const dragger = gsap.Draggable.create(contentRef.current, {
+      const dragger = Draggable.create(contentRef.current, {
         type: 'y',
         trigger: dragHandleRef.current,
         bounds: { minY: 0, maxY: window.innerHeight },
@@ -65,7 +65,7 @@ export default function Modal({ isOpen, onClose, children }) {
       {/* Bottom Sheet */}
       <div 
         ref={contentRef}
-        className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] z-[70] bg-tjm-dark-900 border-t border-tjm-dark-700 rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.5)] translate-y-full flex flex-col max-h-[90dvh]"
+        className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full lg:max-w-[1024px] z-[70] bg-tjm-dark-900 border-t border-tjm-dark-700 rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.5)] translate-y-full flex flex-col max-h-[90dvh]"
       >
         {/* Drag Handle */}
         <div ref={dragHandleRef} className="w-full flex justify-center py-4 cursor-grab active:cursor-grabbing">
